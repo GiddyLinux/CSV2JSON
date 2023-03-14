@@ -15,6 +15,7 @@
 ## Features
     - Error handling 
         - NotFound Error
+        - No Arguments Supplied
     - Fully commented for clarity
     - Sorted into clear functions
 
