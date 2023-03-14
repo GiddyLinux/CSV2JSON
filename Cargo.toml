@@ -1,5 +1,5 @@
 [package]
-name = "CSV2JSON"
+name = "csv2_json"
 version = "0.1.0"
 edition = "2021"
 

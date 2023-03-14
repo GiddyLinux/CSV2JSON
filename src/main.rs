@@ -8,15 +8,25 @@ use std::io::ErrorKind;
 use std::env;
 
 fn main() {
+
+
     // creates a new String vector that is made up of arguments provided
     let arguments: Vec<String> = env::args().collect();
+
+    if arguments.len() >= 1 {
+
+
+        error("No arguments supplied", "");
+        std::process::exit(0)
+
+    }
     // binds the variable json_type to the first argument in arguments
     let json_type = &arguments[1];
     // binds the variable filename to the second argument in arguments
     let filename = &arguments[2];
 
     // sets the json_response variable to the output of convert_csv
-    // it takes the filename, type of output (normal or key) and if headers exist
+    // it takes the filename, type of output (2d or key) and if headers exist
     let json_response = convert_csv(filename, json_type, false);
     // prints the json as string
     println!(
@@ -32,7 +42,7 @@ fn main() {
 
 // initiates new function called convert_csv which takes filename  (&str), json_type (&str) and headers_exist (bool) as arguments
 fn convert_csv(filename: &str, json_type: &str, headers_exist: bool) -> Vec<u8> {
-    if !json_type.contains("key") && !json_type.contains("normal") {
+    if !json_type.contains("key") && !json_type.contains("2d") {
         error("Invalid Json Type", json_type);
         std::process::exit(0)
     }
@@ -69,8 +79,8 @@ fn convert_csv(filename: &str, json_type: &str, headers_exist: bool) -> Vec<u8> 
     // initiates a new mutable vector
     let mut list_of_records = vec![];
 
-    // checks if json_type equals normal
-    if json_type == "normal" {
+    // checks if json_type equals 2d
+    if json_type == "2d" {
         // iterates over each record and flattens it out the nested vector
         for record in reader.records().flatten() {
             // iterates through each value in the row and maps them into a String vector
