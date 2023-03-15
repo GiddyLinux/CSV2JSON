@@ -13,7 +13,7 @@ fn main() {
     // creates a new String vector that is made up of arguments provided
     let arguments: Vec<String> = env::args().collect();
 
-    if arguments.len() >= 1 {
+    if arguments.len() <= 1 {
 
 
         error("No arguments supplied", "");
