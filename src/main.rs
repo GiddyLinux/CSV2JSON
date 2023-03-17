@@ -17,7 +17,7 @@ fn main() {
 
 
         error("No arguments supplied", "");
-        std::process::exit(0)
+        std::process::exit(2)
 
     }
     // binds the variable json_type to the first argument in arguments
